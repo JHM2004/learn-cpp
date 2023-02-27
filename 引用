@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int i = 0;
+	int& j = i;
+	i = 9;
+	cout << i << endl << j << endl;
+	return 0;
+}
+
+
+(j相当于j的代名词,两者同时变化)
