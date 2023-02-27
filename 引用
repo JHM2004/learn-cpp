@@ -12,3 +12,29 @@ int main()
 
 
 (j相当于j的代名词,两者同时变化,两者使用同一块空间)
+
+
+//...........................................................
+//实例:
+
+
+
+//通过引用变量直接操作实参:(与传递指针的效果一样,共享内存空间,不会再开辟单元)
+#include<iostream>
+using namespace std;
+void ret(int &x, int &y)
+{
+	int k = x;
+	x = y;
+	y = k;
+}
+
+int main()
+{
+	int i = 1;
+	int j = 2;
+	ret(i, j);
+	cout << i << endl << j << endl;
+	return 0;
+}
+
