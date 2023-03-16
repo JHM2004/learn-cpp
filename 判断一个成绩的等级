@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	float i = 0;
+	cout << "请输入一个百分制实型成绩:" << endl;
+	cin >> i;
+	if (i < 0 || i>100)
+		cout << "成绩输入错误" << endl;
+	else if (i >= 90)
+		cout << "优" << endl;
+	else if (i >= 80)
+		cout << "良" << endl;
+	else if (i >= 70)
+		cout << "中" << endl;
+	else if (i >= 60)
+		cout << "及格" << endl;
+	else 
+		cout << "不及格" << endl;
+	return 0;
+}
