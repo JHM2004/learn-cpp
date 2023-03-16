@@ -12,3 +12,20 @@ int main()
 	cout << "从1加到100等于:" << sum << endl;
 	return 0;
 }
+
+
+/*法二:
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i = 101;
+	int sum = 0;
+	while (--i)
+	{
+		sum += i;
+	}
+	cout << "从1加到100等于:" << sum << endl;
+	return 0;
+}
+*/
