@@ -10,7 +10,7 @@ int main()
 		j = 0;
 		while (j++ <= 10 - i)
 		{
-			cout << setw(4) << i * j;
+			cout << setw(4) << i * j<<" ";
 		}
 		cout << endl;
 	}
