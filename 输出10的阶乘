@@ -1,0 +1,23 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{	
+	int i = 0;
+	long ret = 0;
+	for ( i = 1,  ret = 1; i <= 10; i++)  
+	{
+		ret *= i;
+	}
+	cout << i << "的阶乘为:" << ret << endl;   
+	return 0;
+}
+
+
+//注:一下为错误的写法:
+//for (int i = 1, long ret = 1; i <= 10; i++)  //从for的()里创建的变量在出循环时会被销毁
+//{
+//	ret *= i;
+//}
+//cout << i << "的十次方为:" << ret << endl;   //报错了
+
