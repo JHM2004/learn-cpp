@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i = 0;
+	int sum = 0;
+	while (i < 101)
+	{
+		sum += i;
+		i++;
+	}
+	cout << "从1加到100等于:" << sum << endl;
+	return 0;
+}
