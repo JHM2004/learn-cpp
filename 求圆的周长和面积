@@ -1,0 +1,13 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+const double pi(3.14159);
+int main()
+{
+	double a = 0;
+	cout << "请输入圆的半径:" << endl;
+	cin >> a;
+	cout << "圆的周长为:" << 2 * pi * a << endl;
+	cout << "圆的面积为:" << pi * a * a << endl;
+	return 0;
+}
