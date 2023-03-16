@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//逻辑运算中的"短路":
+	int a = -1;
+	int b = -1;
+	int c = -1;
+	int y = 0;
+	y = ++a && ++b && ++c;
+	cout << a << endl << b << endl << c << endl << y << endl;
+	return 0;
+}
