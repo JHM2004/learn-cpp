@@ -1,0 +1,50 @@
+////我写的数字金字塔:
+//#include<iostream>
+//#include<iomanip>
+//using namespace std;
+//int main()
+//{	
+//	int i = 0;
+//	int j = 0;
+//	int n = 0;
+//	int m = 0;
+//	for (i = 1; i < 10; i++)
+//	{
+//		n++;
+//		for (m = 0; m < 10 - i; m++)
+//		{
+//			cout << ' ';
+//		}
+//		for (j = 1; j <= i; j++)
+//		{
+//			cout << setw(2) << n;
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
+
+//.......................................................................
+
+//按书上写的数字金字塔:
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i = 0;
+	int j = 0;
+	for (i = 1; i < 10; i++)
+	{
+		for (j = 0; j <= 10 - i; j++)
+		{
+			cout << ' ';
+		}
+		for (j = 1; j <= i; j++)
+		{
+			cout << i << ' ';
+		}
+		cout << endl;
+	}
+	return 0;
+}
