@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+const int ret = 5;
+int main()
+{
+	//计算二维数组各行的平均值:
+	int arr[3][ret] = { {1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,7} };
+	int (*p) [ret] = arr;
+	int i = 0;
+	for (i = 0; i < 3; i++)
+	{
+		int j = 0;
+		int sum = 0;
+		for (j = 0; j < ret; j++)
+		{
+			sum += *((*p) + j);
+		}
+		cout << "第"<<i<<"行的平均值为:" << (double)(sum / ret) << endl;
+		p++;
+	}
+	return 0;
+}
