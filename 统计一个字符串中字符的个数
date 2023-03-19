@@ -1,0 +1,11 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//统计一个字符串中字符的个数:
+	char arr[80] = "I love Chine I love nature I love C++";
+	int i = 0;
+	while (arr[i++]);
+	cout << "字符的个数为:" << i - 1 << endl;
+	return 0;
+}
