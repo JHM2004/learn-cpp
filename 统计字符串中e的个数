@@ -19,3 +19,4 @@ int main()
 	cout <<endl<< arr<<"中e的个数为:" << sum << endl;
 	return 0;
 }
+//注:输入输出字符串可以只用cout/cin+数组名
