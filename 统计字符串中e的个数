@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//统计字符串中e的个数:
+	char arr[80] = { 0 };
+	cout << "请输入一个字符串:"<<endl;
+	cin >> arr;
+	int i = 0;
+	int sum = 0;
+	while (arr[i] != '\0')
+	{
+		i++;
+		if (arr[i] == 'e')
+		{
+			sum++;
+		}
+	}
+	cout <<endl<< arr<<"中e的个数为:" << sum << endl;
+	return 0;
+}
