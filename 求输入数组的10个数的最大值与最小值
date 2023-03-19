@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//求输入数组的10个数的最大值与最小值:
+	int arr[10] = { 0 };
+	cout << "请输入10个数字:" << endl;
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		cin >> arr[i];
+	}
+	int max = 0;
+	int mix = 0;
+	max = mix = arr[0];
+	for (i = 0; i < 10; i++)
+	{
+		if (arr[i] < mix)
+		{
+			mix = arr[i];
+		}
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+	}
+	cout << "最大值为:" << max << endl;
+	cout << "最小值为:" << mix << endl;
+	return 0;
+}
