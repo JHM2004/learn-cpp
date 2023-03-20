@@ -1,0 +1,29 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int num = 0;
+    for (int i = 2; i <= 101; i++)
+    {
+        for (int j = 2; j <= i; j++)
+        {
+            if (i % j == 0)
+            {
+                if (i == j)
+                {
+                    cout << setw(5) << i << ' ';
+                    num++;
+                    if (num % 5 == 0 && num != 0) cout << endl;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+    }
+    return 0;
+}
