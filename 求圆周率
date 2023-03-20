@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double i=0.0;
+    int n=0;
+    int m=0;
+    int a=-1;
+    do
+    {
+        m++;
+        a*=(-1);
+        n=2*m-1;
+        n*=a;
+        i+=1.0/n;
+    }while(1.0/(n*n)>=10e-12);
+    cout<<"圆周率近似为："<<4*i<<endl;
+    return 0;
+}
