@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<"请输入一个字符："<<endl;
+    char ch=0;
+    cin>>ch;
+    if(ch>='0'&&ch<='9')
+    {
+        cout<<"输入的是数字"<<endl;
+    }
+     else  if(ch>='a'&&ch<='z')
+    {
+        cout<<"输入的是小写字母"<<endl;
+    }
+    else   if(ch>='A'&&ch<='Z')
+    {
+        cout<<"输入的是大写字母"<<endl;
+    }
+    else
+    {
+        cout<<"输入的是其他字符"<<endl;
+    }
+
+    return 0;
+}
