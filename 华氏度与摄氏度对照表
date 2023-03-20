@@ -1,0 +1,16 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int f=0;
+    double c=0.0;
+    cout<<setw(10)<<"华氏度"<<setw(10)<<"摄氏度"<<endl;
+    for(f=-30;f<=100;f+=5)
+    {
+        c=1.8*(f-32);
+        cout<<setw(10)<<f<<setw(10)<<c<<endl;
+    }
+    return 0;
+}
