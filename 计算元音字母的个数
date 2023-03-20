@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //注：此程序输入的最大字符串长度为100
+    int a=0,e=0,i=0,o=0,u=0,sum=0;
+    char n=0;
+    cout<<"请输入一段字符串,并以'#'字符为结尾:>"<<endl;
+    cin>>n;
+    while(n!='#')
+    {
+        switch(n)
+        {
+        case 'a':
+            a++;
+            sum++;
+            break;
+        case'e':
+            e++;
+            sum++;
+            break;
+        case 'i':
+            i++;
+            sum++;
+            break;
+        case 'o':
+            o++;
+            sum++;
+            break;
+        case 'u':
+            u++;
+            sum++;
+            break;
+        default:
+            break;
+        }
+    cin>>n;
+    }
+    cout<<"the number of 'a' is "<<a<<endl;
+    cout<<"the number of 'e' is "<<e<<endl;
+    cout<<"the number of 'i' is "<<i<<endl;
+    cout<<"the number of 'o' is "<<o<<endl;
+    cout<<"the number of 'u' is "<<u<<endl;
+    cout<<"the number of 'a'||'e'||'i'||'o'||'u' is "<<sum<<endl;
+    return 0;
+}
