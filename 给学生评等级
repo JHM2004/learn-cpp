@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int arr[11]={0};
+    again:
+    cout<<" 请输入学生的成绩："<<endl;
+    int i=0;
+    for(i=0;i<10;i++)
+    {
+        cin>>arr[i];
+    }
+    for(i=0;i<10;i++)
+    {
+        cout<<"第"<<i+1<<"号同学的成绩为："<<' ';
+        if(arr[i]<0||arr[i]>100)
+         {
+            cout<<"成绩输入错误，请重新输入所有学生成绩："<<endl;
+            goto again;
+         }
+        else if(arr[i]>=90) cout<<'A'<<endl;
+        else if(arr[i]>=80) cout<<'B'<<endl;
+        else if(arr[i]>=60) cout<<'C'<<endl;
+        else  cout<<'D'<<endl;
+
+    }
+    return 0;
+}
