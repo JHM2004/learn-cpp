@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//实现两个字符串的连接:
+	char arr1[20] = "abcde";
+	char* p;
+	char arr2[10] = "fgh";
+	p = arr1;
+	while (*p) p++;   //p到了arr1的'\0'处
+	int j = -1;
+	while (*(arr2+(++j)))
+	{
+		*p++ = *(arr2 + j);
+	}
+	//跳出时j的位置就是\0
+	*p = '\0';
+	cout << arr1 << endl;
+	return 0;
+}
