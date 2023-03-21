@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+//编写x的n次方的函数:
+
+long power(int x, int n)
+{
+	int j = x;
+	for (int i = 1; i < n; i++)
+	{
+
+		x *= j;
+	}
+	return x;
+}
+
+int main()
+{
+	int x = 4;
+	int n = 3;
+	long result = power(x, n);
+	cout << x << "的" << n << "次方为:" << result << endl;
+	return 0;
+}
