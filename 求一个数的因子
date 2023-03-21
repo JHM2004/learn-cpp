@@ -1,0 +1,26 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	//求一个数的所有因子(100以内):
+	int n = 0;
+	cout << "请输入要求的数:>" << endl;
+	cin >> n;
+	int arr[100] = { 0 };
+	int sum = 0;
+	cout << n << "的因子为:>" << endl;
+	for (int i = 1; i <=n; i++)
+	{
+		if (n % i == 0)
+		{
+			cout << setw(5)<<i << ' ';
+			sum++;
+			if (sum % 5 == 0 && sum != 0)
+			{
+				cout << endl;
+			}
+		}
+	}
+	return 0;
+}
