@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//验证任何一个自然数都可以写成几个连续奇数之和:
+	int ret = 0;
+	cout << "输入一个验证数:>" << endl;
+	cin >> ret;
+	int i = 0;
+	int j = 0;
+	for (i = 1; i <= ret; i++)
+	{
+		j += ((ret * (ret - 1)) + 2*i-1);
+	}
+	if (j == ret*ret*ret) cout  <<"定理验证成立" << endl;
+	else cout << "验证不成立" << endl;
+	return 0;
+}
