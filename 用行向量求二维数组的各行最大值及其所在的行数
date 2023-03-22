@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+void fmax1 (int(*p)[3])
+{
+	int max = 0;
+	int c = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		max = *(*(p + i) + 0);      //初始化在循环之前,不能在循环时每次都初始化!!循环要保留数据
+		for (int j = 0; j < 3; j++)
+		{
+			 
+			if (*(*(p + i) + j) > max)
+			{
+				max = *(*(p + i) + j);
+				c = j;
+			}
+		}
+		cout << "第" << i<<"行" <<"的第" << c<<"列" <<"最大为:" << max << endl;
+	}
+}
+
+int main()
+{
+	//用行向量写函数,求二维数组各行的最大值和其所在行数:
+	int arr[3][3] = { 33,84,75,66,38,99,80,67,52 };
+	fmax1(arr);
+	return 0;
+}
