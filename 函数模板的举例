@@ -2,9 +2,9 @@
 using namespace std;
 //函数模板的举例:
 template <class T1,class T2>
-void add(T1 a[], T2 b[])
+void addarray(T1 a[], T2 b[],int size)
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < size; i++)
 	{
 		a[i] += b[i];
 	}
