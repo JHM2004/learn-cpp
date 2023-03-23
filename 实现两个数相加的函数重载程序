@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+//实现两个数相加的函数重载程序:
+int add(int, int);
+float add(float, float);
+double add(double, double);
+
+int main()
+{
+	int a = 3, b = 4;
+	float q = 3.3, w = 4.4;
+	double e = 4.4, r = 5.5;
+	cout <<"int:    " << add(a, b) << endl;
+	cout <<"float:  " << add(q, w) << endl;
+	cout <<"double: " << add(e, r) << endl;
+	return 0;
+}
+int add(int i, int j)
+{
+	return i + j;
+}
+float add(float i, float j)
+{
+	return i + j;
+}
+double add(double i, double j)
+{
+	return i + j;
+}
