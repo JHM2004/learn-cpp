@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+//指针函数的使用(输出数字对应的星期):
+char* date(int i);
+int main()
+{
+	int i = 0;
+	cout << "请输入1到7的数字:>" << endl;
+	cin >> i;
+	cout << date(i) << endl;
+	return 0;
+}
+
+char* date(int i)
+{
+	static  char* str[] = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+	return str[i-1];
+}
