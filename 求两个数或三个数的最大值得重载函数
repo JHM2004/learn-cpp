@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+//实现求两个数或三个数的最大值的重载函数:
+int fmax(int, int, int);
+int fmax(int, int);
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int c = 0; 
+	cout << "请输入三个数:>" << endl;
+	cin >> a >> b >> c;
+	cout << fmax(a, b, c) << endl;
+	cout << fmax(a, b) << endl;
+	return 0;
+}
+int fmax(int i, int j)
+{
+	return i > j ? i : j;
+}
+
+int fmax(int i, int j, int k)
+{
+	int ret = 0;
+	ret = i > j ? i : j;
+	return ret > k ? ret : k;
+}
