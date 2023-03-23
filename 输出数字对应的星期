@@ -14,5 +14,6 @@ int main()
 char* date(int i)
 {
 	static  char* str[] = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+    //注:static修饰的是静态变量,出局部函数后不会销毁
 	return str[i-1];
 }
