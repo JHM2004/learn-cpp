@@ -1,0 +1,15 @@
+#include<iostream>
+#include<time.h>
+#include<windows.h>
+using namespace std;
+int main()
+{
+	//产生随机数(1到999):
+	srand(time(NULL));
+	while (1)
+	{
+		cout << rand()%1000 << endl;
+		Sleep(500);
+	}
+	return 0;
+}
