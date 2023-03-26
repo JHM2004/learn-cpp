@@ -1,0 +1,66 @@
+#include<iostream>
+using namespace std;
+//练习使用构造函数:
+class Student
+{
+private:
+	char* stname;
+	int stage;
+public:
+	void StudentInit(char* name, int age)
+	{
+		stname = name;
+		stage = age;
+	}
+	char* Getname(void)
+	{
+		return stname;
+	}
+	int Getage(void)
+	{
+		return stage;
+	}
+	void Print(void)
+	{
+		cout << "姓名:" << stname << " " << "年龄:" << stage << endl;
+	}
+	//................................................................
+	Student()
+	{
+		stname = "haha";
+		stage = 0;
+	}
+	Student(char*name)
+	{
+		stname = name;
+		stage = 0;
+	}
+	Student(char*name,int age)
+	{
+		stname = name;
+		stage = age;
+	}
+	Student(int age)
+	{
+		stname = "haha";
+		stage = age;
+	}
+};
+int main()
+{
+	Student yangge;
+	yangge.StudentInit("yangge", 18);
+	yangge.Print();
+	Student haha;
+	haha.StudentInit("haha", 18);
+	haha.Print();
+	//..................................................
+	    Student a;
+	a.Print();
+		Student b("b");
+	b.Print();
+		Student c("b",18);
+	c.Print();
+
+	return 0;
+}
