@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	//使用strcmp实现两个字符串的比较:
+	char arr1[10], arr2[20] = "abcdefg";
+	cout << "请输入一个字符串:>" << endl;
+	cin.getline(arr1, 10);
+	int i = strcmp(arr1, arr2);
+	if (i > 0)cout << "arr1>arr2" << endl;
+	else if (i < 0) cout << "arr1<arr2" << endl;
+	else cout << "arr1=arr2";
+	return 0;
+}
