@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+//实现立方体的类:
+class Cube
+{
+private:
+	int mL;
+	int mW;
+	int mH;
+public:
+	void cubeInit(int l, int w, int h)
+	{
+		mL = l;
+		mW = w;
+		mH = h;
+	}
+	int getL(void)
+	{
+		return mL;
+	}
+	int getW(void)
+	{
+		return mW;
+	}
+	int getH(void)
+	{
+		return mH;
+	}
+	int getS(void)
+	{
+		return 2 * (mL * mW + mL * mH + mH * mW);
+	}
+	int getV(void)
+	{
+		return mL * mW * mH;
+	}
+	//判断两个立方体是否相等(成员函数实现):
+	bool cubeCompare1(Cube& b2)
+	{
+		if (mW == b2.getW() && mH == b2.getH() && mL == b2.getL())
+		{
+			return true;
+		}
+		else return false;
+	}
+};
+//判断两个立方体是否相等(全局函数实现):
+bool cubeCompare1(Cube& b1, Cube& b2)
+{
+	if (b1.getH() == b2.getH() && b1.getL() == b2.getL() && b1.getW() == b2.getW())
+	{
+		return true;
+	}
+	else return false;
+}
+int main()
+{
+	Cube b1;
+	b1.cubeInit(10, 20, 30);
+	cout << b1.getS() << endl;
+	cout << b1.getV() << endl;
+	Cube b2;
+	b2.cubeInit(10, 20, 30);
+	//判断两个立方体是否相等(全局函数实现):
+	if (cubeCompare1(b1, b2))
+	{
+		cout << "相等" << endl;
+	}
+	else cout << "不相等" << endl;
+	//判断两个立方体是否相等(成员函数实现):
+	if (b1.cubeCompare1(b2))
+	{
+		cout << "相等" << endl;
+	}
+	else cout << "不相等" << endl;
+	return 0;
+}
