@@ -1,0 +1,47 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Person
+{
+private:
+	char* mname;
+public:
+	void PersonInit(char* name)
+	{
+		mname = new char(strlen(name) + 1);
+		strcpy(mname, name);
+	}
+	void PersonPrint(void)
+	{
+		cout << "姓名为:" << mname << endl;
+	}
+	//构造函数:
+	Person()
+	{
+		mname = NULL;
+	}
+	Person(char* name)
+	{
+		mname = new char[strlen(name) + 1];
+		strcpy(mname, name);
+	}
+	//析构函数:
+	~Person()
+	{
+		if (mname != NULL)
+		{
+			delete [] mname;
+			mname = NULL;
+			cout << "析构函数已调用完毕!" << endl;
+		}
+	}
+};
+
+int main()
+{
+	Person yangyu("yangyu");
+	yangyu.PersonPrint();
+	return 0;
+}
