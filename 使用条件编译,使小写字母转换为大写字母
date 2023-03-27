@@ -1,0 +1,27 @@
+#include <iostream>
+#define capital 1
+using namespace std;
+void print(char*p);
+int main()
+{
+    //使用条件编译，将小写字母转换为大写字母：
+    char arr[80];
+    cout<<"请输入一个字符串：";
+    cin.getline(arr,80);
+    print(arr);
+    return 0;
+}
+
+void print(char*p)
+{
+    int i=0;
+    char a;
+    while((a=p[i])!='\0')
+    {
+#if capital
+    if(a>='a'&&a<='z') a-='a'-'A';
+#endif
+    cout<<a;
+    i++;
+    }
+}
