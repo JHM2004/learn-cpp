@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+//实现浅拷贝函数:
+
+class Number
+{
+private:
+	int Num;
+public:
+	Number()
+	{
+		Num = 0;
+		cout << "无参构造" << endl;
+	}
+	Number(int num)
+	{
+		Num = num;
+		cout << "有参构造,Num=" << Num << endl;
+	}
+	Number(const Number& nu)
+	{
+		Num = nu.Num;
+		cout << "浅拷贝构造,Num=" << Num << endl;
+	}
+
+	~Number()
+	{
+		cout << "析构函数,Num=" << Num << endl;
+	}
+};
+
+int main()
+{
+	Number num1(10);
+	Number num2 = num1;
+	return 0;
+}
