@@ -1,0 +1,43 @@
+
+#include <iostream>
+//判断一个数是不是素数：
+using namespace std;
+int GetNum(void);
+void isPrime(int i);
+int main()
+{
+    int num=0;
+    num=GetNum();
+    isPrime(num);
+    return 0;
+}
+int GetNum(void)
+{
+    int i=0;
+    cout<<"请输入一个数："<<endl;
+    int p=0;
+    do
+    {
+        cin>>i;
+        p=0;
+        if(i<=0)
+        {
+            cout<<"输入错误，请重新输入："<<endl;
+            p=1;
+        }
+    }while(p);
+}
+void isPrime(int i)
+{
+    int a=2;
+    while(a<i)
+    {
+        if(i%a==0)
+        {
+            cout<<i<<"不是素数"<<endl;
+            return ;
+        }
+        a++;
+    }
+    cout<<i<<"是素数"<<endl;
+}
