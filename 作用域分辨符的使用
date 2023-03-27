@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+//作用域分辨符的使用：
+int a=0;
+int main()
+{
+    int a=1;
+    {
+        int a=2;
+        cout<<"a="<<a<<' '<<"::a="<<::a<<endl;
+    }
+        cout<<"a="<<a<<' '<<"::a="<<::a<<endl;
+    return 0;
+}
