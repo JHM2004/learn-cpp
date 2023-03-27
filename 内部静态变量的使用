@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+int fun(int  a[],int&b);
+int main()
+{
+    int arr[][3]={{1,2,3},{4,5,6},{7,8,9}};
+    int ret=0;
+    int r=0;
+    for(int i=0;i<3;i++)
+    {
+        r= fun(arr[i],ret);
+        cout<<"r="<<r<<' '<<"ret="<<ret<<endl;
+    }
+    return 0;
+}
+int fun(int a[],int&b)
+{
+    int c=0;
+    static int d=0;
+    for(int i=0;i<3;i++)
+    {
+        c+=a[i];
+        d+=a[i];
+    }
+    b=c;
+    return d;
+}
