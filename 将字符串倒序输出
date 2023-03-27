@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string.h>
+void rever (char*p);
+using namespace std;
+//将字符串倒叙输出：
+const int N =80;
+int main()
+{
+    char arr[N];
+    cout<<"请输入一个字符串："<<endl;
+    cin.getline(arr,N);
+    rever(arr);
+    cout<<"倒叙后的字符串为："<<arr<<endl;
+    return 0;
+}
+
+void rever (char*p)
+{
+    char ret=NULL;
+    for( char*p1=(p+strlen(p)-1);p<p1;p++,p1--)
+    {
+        ret=*p1;
+        *p1=*p;
+        *p=ret;
+    }
+}
