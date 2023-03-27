@@ -1,0 +1,26 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+double fun(double x);
+//用梯形法求定积分的值：
+int main()
+{
+    cout << "请输入一个数n为：" << endl;
+    int n = 0;
+    cin >> n;
+    //括号里前面的：
+    double a = 0.0;
+    a = (fun(0.0) + fun(2.0)) / 2.0;
+    //括号里后面的：
+    double b = 0.0;
+    for (int i = 1; i <= n - 1; i++)
+    {
+        b += fun(i * 2.0 / n);
+    }
+    cout << "面积为：" << (a + b) * 2.0 / n << endl;
+    return 0;
+}
+double fun(double x)
+{
+    return 2.0 * x * x + exp(x);
+}
