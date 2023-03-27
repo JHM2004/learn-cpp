@@ -1,0 +1,66 @@
+//对象成员的有参构造的初始化列表的使用:
+#include<iostream>
+using namespace std;
+class A
+{
+private:
+	int mA;
+public:
+	//A的初始化:
+	void AInit(int a)
+	{
+		mA = a;
+	}
+	//A的无参构造:
+	A()
+	{
+		mA = 0;
+		cout << "A的无参构造" << endl;
+	}
+	//A的有参构造:
+	A(int a)
+	{
+		mA = a;
+		cout << "A的有参构造" << endl;
+	}
+	//A的析构函数:
+	~A()
+	{
+		mA = 0;
+		cout << "A的析构函数" << endl;
+	}
+};
+class B
+{
+private:
+	int mB;
+	A aa;
+public:
+	//B的无参构造:
+	B()
+	{
+		cout << "B的无参构造" << endl;
+	}
+	//B的有参构造:(A的无参构造)
+	B(int b)
+	{
+		mB = b;
+		cout << "B的有参构造,A的无参构造" << endl;
+	}
+	//B的有参构造:(A的有参构造)(初始化列表)
+	B(int a,int b):aa(a)
+	{
+		mB = b;
+		cout << "B的有参构造,A的有参构造" << endl;
+	}
+	//B的析构函数:
+	~B()
+	{
+		cout << "B的析构函数" << endl;
+	}
+};
+int main()
+{
+	B b1(10, 10);
+	return 0;
+}
