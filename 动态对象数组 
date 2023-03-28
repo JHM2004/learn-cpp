@@ -1,0 +1,85 @@
+//对象成员的有参构造的初始化列表的使用:
+#include<iostream>
+using namespace std;
+class A
+{
+private:
+	int mA;
+public:
+	//A的初始化:
+	void AInit(int a)
+	{
+		mA = a;
+	}
+	void APrint(void)
+	{
+		cout << mA << ' ';
+	}
+	//A的无参构造:
+	A()
+	{
+		mA = 0;
+		cout << "A的无参构造" << endl;
+	}
+	//A的有参构造:
+	A(int a)
+	{
+		mA = a;
+		cout << "A的有参构造 " ;
+		cout << "mA=" << mA << endl;
+	}
+	//A的析构函数:
+	~A()
+	{
+		cout << "A的析构函数 " ;
+		cout << "mA=" << mA<<endl ;
+	}
+};
+#if 0
+class B
+{
+private:
+	int mB;
+	A aa;
+public:
+	//B的无参构造:
+	B()
+	{
+		cout << "B的无参构造" << endl;
+	}
+	//B的有参构造:(A的无参构造)
+	B(int b)
+	{
+		mB = b;
+		cout << "B的有参构造,A的无参构造" << endl;
+	}
+	//B的有参构造:(A的有参构造)(初始化列表)
+	B(int a,int b):aa(a)
+	{
+		mB = b;
+		cout << "B的有参构造,A的有参构造" << endl;
+	}
+	//B的析构函数:
+	~B()
+	{
+		cout << "B的析构函数" << endl;
+	}
+};
+#endif
+int main()
+{
+#if 0
+	//对象数组:
+	A arr1[3];
+	A arr2[3] = { A(1),A(2),A(3) };
+	for (int i = 0; i < 3; i++)
+	{
+		arr2[i].APrint();
+	}
+	cout << endl;
+#endif
+	//动态对象数组:
+	A* aa = new A[30];  //自动调用无参构造
+	delete[] aa;
+	return 0;
+}
