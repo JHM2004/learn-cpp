@@ -1,0 +1,141 @@
+//实现电视机类与遥控器类:
+#include<iostream>
+using namespace std;
+class TV;
+class Remote
+{
+private:
+	TV* p;
+public:
+	//有参构造:
+	Remote(TV* p);
+	//实现电视机的功能函数:
+	void OffOrOn(void);
+	void UpVolume(void);
+	void DownVolume(void);
+	void UpChannel(void);
+	void DownChannel(void);
+	void SetChannel(int i);
+	void ShowTV(void);
+};
+
+class TV
+{
+	friend class Remote;
+	enum{OFF,ON};
+	enum{mixVol,maxVol=10};
+	enum{mixChan,maxChan=20};
+private:
+	int state;
+	int volume;
+	int channel;
+public:
+	//实现无参构造:
+	TV()
+	{
+		state = OFF;
+		volume = mixVol;
+		channel = mixChan;
+	}
+	//电视机的功能函数:
+	void OffOrOn(void);
+	void UpVolume(void);
+	void DownVolume(void);
+	void UpChannel(void);
+	void DownChannel(void);
+	void ShowTV(void);
+};
+void TV::OffOrOn(void)
+{
+	state = (state == OFF ? ON : OFF); 
+}
+void TV::UpVolume(void)
+{
+	if (volume == maxVol)
+	{
+		cout << "音量已最大" << endl;
+	}
+	else volume++;
+}
+void TV::DownVolume(void)
+{
+	if (volume == mixVol)
+	{
+		cout << "音量已最小" << endl;
+	}
+	else volume--;
+}
+void TV::UpChannel(void)
+{
+	if (channel == maxChan)
+	{
+		cout << "频道已最大" << endl;
+	}
+	else channel++;
+}
+void TV::DownChannel(void)
+{
+	if (channel == mixChan)
+	{
+		cout << "频道已最小" << endl;
+	}
+	else channel--;
+}
+void TV::ShowTV(void)
+{
+	cout << "电视机的状态为:" << (state == OFF ? "关" : "开")<<endl;
+	cout << "电视机的音量为:" << volume << endl;
+	cout << "电视机的频道为:" << channel << endl;
+}
+int main()
+{
+	TV tv;
+	Remote re(&tv);
+	re.OffOrOn();
+	re.UpVolume();
+	re.UpVolume();
+	re.SetChannel(10);
+	re.ShowTV();
+	return 0;
+}
+
+Remote::Remote(TV* p)
+{
+	//this指向当前对象:
+	this->p = p;
+}
+
+void Remote::OffOrOn(void)
+{
+	p->OffOrOn();
+}
+
+void Remote::UpVolume(void)
+{
+	p->UpVolume();
+}
+
+void Remote::DownVolume(void)
+{
+	p->DownVolume();
+}
+
+void Remote::UpChannel(void)
+{
+	p->UpChannel();
+}
+
+void Remote::DownChannel(void)
+{
+	p->DownChannel();
+}
+
+void Remote::SetChannel(int i)
+{
+	p->channel = i;
+}
+
+void Remote::ShowTV(void)
+{
+	p->ShowTV();
+}
