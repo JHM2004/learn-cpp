@@ -1,0 +1,56 @@
+//单例模式:
+#include<iostream>
+using namespace std;
+class SingleTon
+{
+private:
+	//..............................构造函数私有化使外部无法构造新的对象:
+	//无参构造:
+	SingleTon()
+	{
+		cout << "无参构造" <<endl;
+	}
+	//拷贝构造:
+	SingleTon(const SingleTon& ton)
+	{
+		cout << "拷贝构造" << endl;
+	}
+	//析构函数:
+	~SingleTon()
+	{
+		cout << "析构函数" << endl;
+	}
+private:
+	//....................................私有数据成员:
+	int count=0;                //计数器
+	static SingleTon* const p;//唯一对象的指针(静态)
+public:
+	//使用静态公共方法可以调用唯一的静态对象的指针p;
+	static SingleTon* GetSingleTon(void)
+	{
+		return p;
+	}
+	//可用的公共函数:
+	void PrintSingleTon(char* str)
+	{
+		cout << str << ' ';
+		count++;
+		cout << "这是第" << count << "次打印" << endl;
+	}
+};    
+SingleTon* const SingleTon:: p=new SingleTon;  //唯一的对象的指针p
+
+int main()
+{
+    SingleTon* p1 = SingleTon::GetSingleTon();
+	p1->PrintSingleTon("aaaaa");
+	p1->PrintSingleTon("bbbbb");
+	p1->PrintSingleTon("ccccc");
+	p1->PrintSingleTon("ddddd");
+	SingleTon* p2 = SingleTon::GetSingleTon();
+	p2->PrintSingleTon("eeeee");
+	p2->PrintSingleTon("fffff");
+	p2->PrintSingleTon("ggggg");
+	p2->PrintSingleTon("hhhhh");
+	return 0;
+}
