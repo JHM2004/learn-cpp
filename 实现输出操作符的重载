@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+//实现输出操作符的重载:	
+class People
+{
+	//将全局函数设置成友元:
+	friend ostream& operator<<(ostream& out, People peo);
+private:
+	int age;
+	string name;
+	float score;
+public:
+	People(){}
+	People(int age ,string name,float score):age(age),name(name),score(score){}
+	~People(){}
+};
+//重载输出操作符:
+ostream& operator<<(ostream& out, People peo)
+{
+	out << peo.age << ' ' << peo.name << ' ' << peo.score << endl;
+	return out;
+}
+
+
+int main()
+{
+	People John(18, "John", 90);
+	People Danny(10, "Danny", 95);
+	cout << 1000 << endl;
+	cout << John << Danny;
+	return 0;
+}
