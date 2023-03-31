@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+//运算符的重载:
+class People
+{
+	//将全局函数设置成友元:
+	friend ostream& operator<<(ostream& out, People peo);
+	friend istream& operator>>(istream& in, People& peo);
+private:
+	int age;
+	string name;
+	float score;
+public:
+	People(){}
+	People(int age ,string name,float score):age(age),name(name),score(score){}
+	~People(){}
+	//用成员函数实现+运算符的重载:
+	People operator+(People& p)
+	{
+		People tmp;
+		tmp.age = age + p.age;
+		tmp.name = name + p.name;
+		tmp.score = score + p.score;
+		return tmp;
+	}
+	//用成员函数实现==运算符:
+	bool operator==(People& p)
+	{
+		if (age == p.age && name == p.name && score == p.score)
+			return true;
+		return false;
+	}
+};
+//重载输出操作符:
+ostream& operator<<(ostream& out, People peo)
+{
+	out << peo.age << ' ' << peo.name << ' ' << peo.score << endl;
+	return out;
+}
+
+istream& operator>>(istream& in, People& peo)
+{
+	in >> peo.age >> peo.name >> peo.score;
+	return in;
+}
+
+
+int main()
+{
+	People John(10,"John",88);
+	People Danny(11,"Danny",99);
+	//cin >> John >> Danny;
+	cout << John << Danny;
+	//使用成员函数实现+的运算符重载:
+	cout << John.operator+(Danny)<<endl;
+	if (John == Danny)
+	{
+		cout << "相等" << endl;
+	}
+	else
+	{
+		cout << "不相等" << endl;
+	}
+	return 0;
+}
