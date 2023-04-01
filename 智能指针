@@ -1,0 +1,65 @@
+#define _CRT_SECURE_NO_WARNINGS
+//实现智能指针:
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+class A
+{
+public:
+	A()
+	{
+		cout << "A的无参构造" << endl;
+	}
+	~A()
+	{
+		cout << "A的析构函数" << endl;
+	}
+	void Print(void)
+	{
+		cout << "Print" << endl;
+	}
+};
+
+//智能指针:
+class SmartPointer
+{
+private:
+	A* p;
+public:
+	SmartPointer() 
+	{
+		cout << "SmartPointer的无参构造" << endl;
+	}                            
+	SmartPointer(A* p)                                     
+	{
+		this->p = p;
+		cout << "SmartPointer的有参构造" << endl;
+	}
+	~SmartPointer()                                        
+	{
+		if (p != NULL)    //p是对象,不能用delete[]释放
+		{
+			delete p;     //A类对象的释放,此前会调用p的析构函数
+			p = NULL;
+		}
+		cout << "SmartPointer的析构函数" << endl;
+	}
+	//重载运算符:
+	A* operator->()
+	{
+		return p;
+	}
+	A& operator*()
+	{
+		return *p;
+	}
+};
+
+int main()
+{
+	SmartPointer pointer(new A);
+	pointer->Print();
+	(*pointer).Print();
+	return 0;
+}
