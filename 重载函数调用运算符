@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+//仿函数:
+class Print
+{
+private:
+	int a;
+public:
+	Print() {};
+	Print(int a) :a(a) {};
+	~Print() {};
+	//重载函数调用运算符:
+	void operator()(char* str)
+	{
+		cout << str << endl;
+	}
+};
+int main()
+{
+	Print a(1);
+	a("asdf");
+	return 0;
+}
