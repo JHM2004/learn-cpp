@@ -1,0 +1,28 @@
+//继承的形式:
+#include<iostream>
+using namespace std;
+class Base
+{
+private:
+	int a;
+protected:
+	int b;
+public:
+	int c;
+};
+
+class Son:public Base               //Son公共继承于Base
+{
+public:
+	void Print(void)
+	{
+		cout << b << ' ' << c << endl;
+	}
+};
+
+int main()
+{
+	Son s;
+	s.Print();
+	return 0;
+}
