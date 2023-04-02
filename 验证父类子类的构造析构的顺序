@@ -1,0 +1,50 @@
+//验证父类子类的构造析构的顺序:
+#include<iostream>
+using namespace std;
+//父类:
+class Base
+{
+public:
+	Base()
+	{
+		cout << "父类的无参构造" << endl;
+	}
+	~Base()
+	{
+		cout << "父类的析构函数" << endl;
+	}
+};
+	//子类的成员函数:
+class Other
+{
+public:
+	Other()
+	{
+		cout << "子类成员函数的无参构造" << endl;
+	}
+	~Other()
+	{
+		cout << "子类成员函数的析构函数" << endl;
+	}
+};
+//子类:
+class Son:public Base
+{
+public:
+	Other er;
+public:
+	Son()
+	{
+		cout << "子函数的无参构造" << endl;
+	}
+	~Son()
+	{
+		cout << "子函数的析构函数" << endl;
+	}
+};
+
+int main()
+{
+	Son son1;
+	return 0;
+}
