@@ -1,0 +1,52 @@
+//子类父类的同名成员的处理:(数据)
+#include<iostream>
+using namespace std;
+//父类:
+class Base
+{
+public:
+	int a;
+public:
+	Base()
+	{
+		cout << "父类的无参构造" << endl;
+	}
+	Base(int a)
+	{
+		this->a = a;
+		cout << "父类的有参构造" << endl;
+	}
+	~Base()
+	{
+		cout << "父类的析构函数" << endl;
+	}
+};
+	
+//子类:
+class Son:public Base
+{
+public:
+	int a;
+public:
+	Son()
+	{
+		cout << "子函数的无参构造" << endl;
+	}
+	Son(int x, int y) :Base(x)
+	{
+		a = y;
+		cout << "子函数的有参构造" << endl;
+	}
+	~Son()
+	{
+		cout << "子函数的析构函数" << endl;
+	}
+};
+
+int main()
+{
+	Son son1(1,2);
+	cout << son1.a << endl;        //子类的a
+	cout << son1.Base::a << endl;  //父类的a
+	return 0;
+}
