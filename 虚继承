@@ -1,0 +1,85 @@
+//虚继承:
+#include<iostream>
+using namespace std;
+//祖先:
+class Base
+{
+public:
+	int a;
+public:
+	Base()
+	{
+		cout << "祖先的无参构造" << endl;
+	}
+	Base(int a)
+	{
+		this->a = a;
+		cout << "祖先的有参构造" << endl;
+	}
+	~Base()
+	{
+		cout << "祖先的析构函数" << endl;
+	}
+	void fun1(void)
+	{
+		cout << "祖先的fun1函数" << endl;
+	}
+};
+//父类1:
+class Base1:virtual public Base
+{
+public:
+	Base1()
+	{
+		cout << "父类1的无参构造" << endl;
+	}
+	~Base1()
+	{
+		cout << "父类1的析构函数" << endl;
+	}
+	void fun1(void)
+	{
+		cout << "父类1的fun1函数" << endl;
+	}
+};
+//父类2:
+class Base2 :virtual public Base
+{
+public:
+	Base2()
+	{
+		cout << "父类2的无参构造" << endl;
+	}
+	~Base2()
+	{
+		cout << "父类1的析构函数" << endl;
+	}
+	void fun2(void)
+	{
+		cout << "父类2的fun1函数" << endl;
+	}
+};
+//子类:
+class Son:public Base1,public Base2
+{
+public:
+	Son()
+	{
+		cout << "子函数的无参构造" << endl;
+	}
+	~Son()
+	{
+		cout << "子函数的析构函数" << endl;
+	}
+	void fun1(void)
+	{
+		cout << "子类的fun1函数" << endl;
+	}
+};
+
+int main()
+{
+	Son son1;      
+	cout << son1.a << endl;   
+	return 0;
+}
