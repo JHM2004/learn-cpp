@@ -1,0 +1,84 @@
+//多继承:
+#include<iostream>
+using namespace std;
+//父类1:
+class Base1
+{
+public:
+	int a;
+public:
+	Base1()
+	{
+		cout << "父类1的无参构造" << endl;
+	}
+	Base1(int a)
+	{
+		this->a = a;
+		cout << "父类1的有参构造" << endl;
+	}
+	~Base1()
+	{
+		cout << "父类1的析构函数" << endl;
+	}
+	void fun1(void)
+	{
+		cout << "父类1的fun1函数" << endl;
+	}
+};
+//父类2:
+class Base2
+{
+public:
+	int a;
+public:
+	Base2()
+	{
+		cout << "父类2的无参构造" << endl;
+	}
+	Base2(int a)
+	{
+		this->a = a;
+		cout << "父类2的有参构造" << endl;
+	}
+	~Base2()
+	{
+		cout << "父类2的析构函数" << endl;
+	}
+	void fun1(void)
+	{
+		cout << "父类2的fun1函数" << endl;
+	}
+};
+//子类:
+class Son:public Base1,public Base2
+{
+public:
+	int a;
+public:
+	Son()
+	{
+		cout << "子函数的无参构造" << endl;
+	}
+	Son(int x, int y,int z) :Base1(x),Base2(y)
+	{
+		a = z;
+		cout << "子函数的有参构造" << endl;
+	}
+	~Son()
+	{
+		cout << "子函数的析构函数" << endl;
+	}
+	void fun1(void)
+	{
+		cout << "子类的fun1函数" << endl;
+	}
+};
+
+int main()
+{
+	Son son1(1,2,3);
+	cout << son1.a << endl;       
+	cout << son1.Base1::a << endl;
+	cout << son1.Base2::a << endl;    
+	return 0;
+}
