@@ -1,0 +1,43 @@
+//虚函数的动态绑定机制:
+#include<iostream>
+using namespace std;
+
+//父类:
+class Animal
+{
+public:
+	virtual void speak(void)              //父类虚函数
+	{
+		cout << "动物在说话" << endl;
+	}
+};
+
+//子类1:
+class Dog:public Animal
+{
+	virtual void speak(void)               //子类虚函数
+	{
+		cout << "狗在汪汪" << endl;
+	}
+};
+
+//子类2:
+class Cat:public Animal
+{
+	virtual void speak(void)               //子类虚函数
+	{
+		cout << "猫在喵喵" << endl;
+	}
+};
+
+void AnimalSpeak(Animal*p)                  //用父类指针指向子类空间
+{
+	p->speak();
+}
+
+int main(int argc,char*argv[])
+{
+	AnimalSpeak(new Cat);
+	AnimalSpeak(new Dog);
+	return 0;
+}
