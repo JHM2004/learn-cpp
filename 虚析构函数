@@ -1,0 +1,46 @@
+//虚析构函数:
+#include<iostream>
+using namespace std;
+//父类:
+class Animal
+{
+public:
+	Animal()
+	{
+		cout << "Animal构造" << endl;
+	}
+	virtual void Speak()
+	{
+		cout << "动物在说话" << endl;
+	}
+	//虚析构函数:
+	virtual ~Animal()
+	{
+		cout << "Animal析构" << endl;
+	}
+};
+//子类:
+class Dog :public Animal
+{
+public:
+	Dog()
+	{
+		cout << "Dog构造" << endl;
+	}
+	virtual void Speak()
+	{
+		cout << "狗在汪汪" << endl;
+	}
+	//虚析构函数:
+	virtual ~Dog()
+	{
+		cout << "Dog析构" << endl;
+	}
+};
+int main()
+{
+	Animal* p = new Dog;
+	p->Speak();
+	delete p;
+	return 0;
+}
