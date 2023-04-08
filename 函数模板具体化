@@ -1,0 +1,35 @@
+//泛型编程(函数模板)
+#include<iostream>
+using namespace std;
+//函数模板具体化:
+     
+//函数模板
+template<typename T> 
+void PrintAll(T a)
+{
+	cout << a << endl;
+	cout << "函数模板" << endl;
+}
+//类:
+class A
+{
+	friend void PrintAll<A>(A x);
+	int a;
+public:
+	A(int a = 0)
+	{
+		this->a = a;
+	}
+};
+//函数模板具体化                   
+template<> void PrintAll<A>(A x)
+{
+	cout <<x.a << endl;
+	cout << "具体化函数模板" << endl;
+}
+int main()
+{
+	A a(1);
+	PrintAll(a);
+	return 0;
+}
