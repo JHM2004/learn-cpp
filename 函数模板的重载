@@ -1,0 +1,26 @@
+//泛型编程(函数模板)
+#include<iostream>
+using namespace std;
+//函数模板的重载:
+template<typename T>           //抽象类型(只能用一次)
+//函数模板1:
+void PrintAll(T a)
+{
+	cout << a << endl;
+	cout << "函数模板1" << endl;
+}
+//函数模板2:                   //抽象类型(第二次用)
+template<typename T>
+void PrintAll(T a, T b)
+{
+	cout << a << ' ' << b << endl;
+	cout << "函数模板2" << endl;
+}
+int main()
+{
+	int a = 1;
+	int b = 2;
+	PrintAll(a);
+	PrintAll(a, b);
+	return 0;
+}
