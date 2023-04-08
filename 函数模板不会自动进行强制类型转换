@@ -1,0 +1,29 @@
+//泛型编程(函数模板)
+//
+#include<iostream>
+using namespace std;
+template<typename T>
+//函数模板不能自动进行强制类型转换:
+//函数模板:
+void PrintAll(T a, T b)
+{
+	cout << a << ' ' << b << endl;
+	cout << "函数模板" << endl;
+}
+//普通函数:
+void PrintAll(int a, int b)
+{
+	cout << a << ' ' << b << endl;
+	cout << "普通函数" << endl;
+
+}
+int main()
+{
+	int a = 1;
+	char b = 'a';
+	//普通函数:(会自动强制类型转换)
+	PrintAll(a, b);
+	//函数模板:(手动强制类型转换)
+	PrintAll<int>(a, b);
+	return 0;
+}
