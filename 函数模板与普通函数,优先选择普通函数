@@ -1,0 +1,30 @@
+//泛型编程(函数模板)
+//函数模板与普通函数都存在,优先选择普通函数
+#include<iostream>
+using namespace std;
+//函数模板:(编译两次)
+template<typename T>
+void swapAll(T& a, T& b)
+{
+	T tem = a;
+	a = b;
+	b = tem;
+	cout << "优先选择函数模板" << endl;
+
+}
+//普通函数:(编译一次)
+void swapAll(int& a, int& b)
+{
+	int tem = a;
+	a = b;
+	b = tem;
+	cout << "优先选择普通函数" << endl;
+}
+int main()
+{
+	int a = 1;
+	int b = 2;
+	swapAll(a, b);
+	cout << a << ' ' << b << endl;
+	return 0;
+}
