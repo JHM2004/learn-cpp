@@ -1,0 +1,29 @@
+//泛型编程(类模板)
+#include<iostream>
+using namespace std;
+template<class T1,class T2>
+class A
+{
+	T1 a;
+	T2 b;
+public:
+	A() {}
+	A(T1 a, T2 b)
+	{
+		this->a = a;
+		this->b = b;
+	}
+	void Print(void)
+	{
+		cout << a << ' ' << b << endl;
+	}
+};
+int main()
+{
+	//类模板实例化对象不会自动推导实参类型
+	A<int, int>x(10, 20);
+	x.Print();
+	A<int, char>y(10, 'y');
+	y.Print();
+	return 0;
+}
