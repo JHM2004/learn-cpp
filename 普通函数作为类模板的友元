@@ -1,0 +1,32 @@
+//泛型编程(类模板)
+//普通函数作为类模板的友元
+#include<iostream>
+using namespace std;
+//类模板
+template<class T1,class T2>
+class A
+{
+	friend void Print(A<int,int>& a);
+	T1 a;
+	T2 b;
+public:
+	A() {}
+	A(T1 a, T2 b);
+};
+template<class T1,class T2>
+A<T1, T2>::A(T1 a , T2 b)
+{
+	this->a = a;
+	this->b = b;
+}
+//函数:
+ void Print(A<int,int>& ob)
+{
+	cout << ob.a << ' ' << ob.b << endl;
+}
+int main()
+{
+	A<int, int>x(10, 20);
+	Print(x);
+	return 0;
+}
