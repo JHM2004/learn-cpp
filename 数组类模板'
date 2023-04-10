@@ -1,0 +1,202 @@
+//数组类模板:
+#include<iostream>
+#include<string>
+#include<string.h>      //用于memset
+
+using namespace std;
+//类:
+template<class T>
+class MyArray
+{
+	//全局函数声明成友元:
+	template<class T1>
+	friend ostream& operator<<(ostream& out, MyArray<T1> ob);
+private:
+	T* arr;
+	int size;
+	int capacity;
+public:
+	//无参,有参,深拷贝构造:
+	MyArray();
+	MyArray(int capacity);
+	MyArray(const MyArray& ob);
+	//析构函数:
+	~MyArray();
+	//赋值运算符的重载:
+	MyArray& operator=(MyArray& ob);
+	//功能函数:
+	void pushelem(T elem);
+	void sort(void);
+};
+//无参构造在类外实现:
+template<class T>
+MyArray<T>::MyArray()
+{
+	capacity = 5;
+	size = 0;
+	arr = new T[capacity];                 //动态开辟空间
+	memset(arr, 0, sizeof(T) * capacity);  //清空获得的空间
+}
+//有参构造在类外实现:
+template<class T>
+MyArray<T>::MyArray(int capacity)
+{
+	this->capacity = capacity;
+	size = 0;
+	arr = new T[capacity];                 //动态开辟空间
+	memset(arr, 0, sizeof(T) * capacity);  //清空获得的空间
+}
+//拷贝构造在类外实现:
+template<class T>
+MyArray<T>::MyArray(const MyArray& ob)
+{
+	capacity = ob.capacity;
+	size = ob.size;
+	arr = new T[capacity];                     //动态开辟空间
+	memset(arr, 0, sizeof(T) * capacity);      //清空获得的空间
+	memcpy(arr, ob.arr, sizeof(T) * capacity); //拷贝内存空间
+}
+//析构函数:
+template<class T>
+MyArray<T>::~MyArray()
+{
+	if (arr != NULL)
+	{
+		delete[]arr;
+		arr = NULL;
+	}
+}
+//赋值运算符的重载:
+template<class T>
+MyArray<T>& MyArray<T>::operator=(MyArray& ob)
+{
+	capacity = ob.capacity;
+	size = ob.size;
+	if (arr != NULL)
+	{
+		delete[]arr;
+		arr = NULL;
+	}
+	memset(arr, 0, sizeof(T) * capacity);      //清空获得的空间
+	memcpy(arr, ob.arr, sizeof(T) * capacity); //拷贝内存空间
+	return *this;                              //为了完成链式操作
+}
+template<class T>
+//插入元素:
+void MyArray<T>::pushelem(T elem)
+{
+	//判断容器是否满:
+	if (size == capacity)
+	{
+		//扩容:
+		capacity *= 2;
+		//申请临时空间:
+		T* tem = new T[capacity];
+		//清空临时空间:
+		memset(tem, 0, sizeof(T) * capacity);
+		if (arr != NULL)
+		{
+			memcpy(tem, arr, sizeof(T) * size);
+			//释放旧空间:
+			delete[]arr;
+			//arr赋予新空间:
+			arr = tem;
+		}
+	}
+	arr[size] = elem;
+	size++;
+}
+//排序:
+template<class T>
+void MyArray<T>::sort(void)
+{
+	//判断是否为空:
+	if (size == 0)
+	{
+		cout << "容器为空,不用排序" << endl;
+		return;
+	}
+	//不为空,用冒泡排序:
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < size - 1; i++)
+	{
+		for (j = 0; j < size - 1 - i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				T tem = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tem;
+			}
+		}
+	}
+}
+//全局函数重载<<输出运算符:
+template<class T1>
+ostream& operator<<(ostream& out, MyArray<T1> ob)
+{
+	for (int i = 0; i < ob.size; i++)
+	{
+		out << ob.arr[i] << ' ';
+	}
+	out << endl;
+	return out;
+}
+class Person
+{
+	friend ostream& operator<<(ostream& out, Person ob);
+private:
+	int num;
+	string name;
+	float score;
+public:
+	Person(){}
+	Person(int num, string name, float score)
+	{
+		this->name = name;
+		this->num = num;
+		this->score = score;
+	}
+	//比较运算符>的重载:
+	bool operator>(Person ob)
+	{
+		return num > ob.num;
+	}
+};
+//全局函数实现Person类<<的重载:
+ostream& operator<<(ostream& out, Person ob)
+{
+	out << ob.num << ' ' << ob.name << ' ' << ob.score << endl;
+	return out;
+}
+int main()
+{
+	//整型类型:
+	MyArray<int> arr1;
+	arr1.pushelem(30);
+	arr1.pushelem(20);
+	arr1.pushelem(60);
+	arr1.pushelem(10);
+	arr1.pushelem(70);
+	arr1.pushelem(40);
+	arr1.sort();
+	cout << arr1 << endl;
+	//字符型类型:
+	MyArray<char>arr2;
+	arr2.pushelem('A');
+	arr2.pushelem('C');
+	arr2.pushelem('E');
+	arr2.pushelem('B');
+	arr2.pushelem('D');
+	arr2.sort();
+	cout << arr2 << endl;
+	//自定义类型:
+	MyArray<Person>arr3;
+	arr3.pushelem(Person(10, "liming", 99.0f));
+	arr3.pushelem(Person(12, "zhangsan", 88.0f));
+	arr3.pushelem(Person(11, "yangyu", 77.0f));
+	arr3.sort();
+	cout << arr3 << endl;
+	return 0;
+}
