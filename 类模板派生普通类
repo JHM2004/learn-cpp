@@ -18,7 +18,7 @@ class Son1 :public Base<int>
 	char ch;
 public:
 	Son1() {}
-	Son1(int t, char ch) :Base(t)
+	Son1(int t, char ch) :Base<int>(t)
 	{
 		this->ch = ch;
 	}
