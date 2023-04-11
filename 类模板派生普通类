@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+//类模板派生普通类:
+template<class T>
+class Base
+{
+	T t;
+public:
+	Base(){}
+	Base(T t)
+	{
+		this->t = t;
+	}
+};
+//普通类:
+class Son1 :public Base<int>
+{
+	char ch;
+public:
+	Son1() {}
+	Son1(int t, char ch) :Base(t)
+	{
+		this->ch = ch;
+	}
+};
+int main()
+{
+	Son1(10, 'a');
+	return 0;
+}
