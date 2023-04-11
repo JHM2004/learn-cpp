@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+//类模板派生类模板:
+template<class T1>
+class Base
+{
+	T1 a;
+public:
+	Base(){}
+	Base(T1 t)
+	{
+		this->a = a;
+	}
+};
+template<class T1 ,class T2>
+class Son :public Base<T1>
+{
+	T2 b;
+public:
+	Son(){}
+	Son(T1 a, T2 b) :Base<T1>(a)
+	{
+		this->b = b;
+	}
+};
+int main()
+{
+	Son<int ,int>c(1, 2);
+	return 0;
+}
