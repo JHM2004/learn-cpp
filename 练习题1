@@ -1,0 +1,27 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+double fun(int n)
+{
+	int j = 0;
+	for (int i = 11; i < n; i++)
+	{
+		if ((i % 5 == 0) && (i % 11 == 0))
+		{
+			j += i;
+		}
+	}
+	return sqrt(j);
+}
+int main()
+{
+	int i = 0;
+	do
+	{
+		cout << "请输入一个数:" << endl;
+		cin >> i;
+	} while (i < 1);
+	double j=fun(i);
+	cout <<"结果为:" << j << endl;
+	return 0;
+}
