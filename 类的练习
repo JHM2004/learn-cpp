@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+//类的习题:
+class Base
+{
+private:
+	int a;
+public:
+	Base() { a = 10; cout << "基类缺省构造函数"<<endl; }
+	Base(int i) { a = i; cout << "基类缺带参构造函数" << endl; }
+	~Base() { cout << "基类析构函数" << endl; }
+	virtual void print() { cout << "a=" << a << endl; }
+};
+class Derived :public Base
+{
+private:
+	int b;
+public:
+	Derived() { b = 20; cout << "派生类缺省构造函数" <<endl; }
+	Derived(int i, int j) :Base(i), b(j) { cout << "派生类带参构造函数" << endl; }
+	~Derived()
+	{
+		cout << "派生类析构函数" << endl;
+	}
+	void print() { Base::print(); cout << "b=" << b << endl; }
+};
+int main()
+{		
+	Base *pa, b;
+	Derived d(1, 2);
+	pa = &b;        
+
+	pa->print();
+	cout << "++++++++++++++++++++++++" << endl;
+	cout << "用父类指针调用虚函数" << endl;
+	pa = &d;           //父类指针接收子类空间(多态)
+	pa->print();
+	cout << "用子类指针调用虚函数" << endl;
+	d.print();
+	return 0;
+}
