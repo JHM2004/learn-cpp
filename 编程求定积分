@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>   //建议用cmath头文件
+using namespace std;
+
+double f(double x) // 定义被积函数
+{
+    return exp(-x) * sin(x);
+}
+
+double trapezoid_integral(double a, double b, int n) // 梯形法求定积分
+{
+    double h = (b - a) / n;
+    double sum = 0.5 * (f(a) + f(b));
+    for (int i = 1; i < n; i++)
+    {
+        double x = a + i * h;
+        sum += f(x);
+    }
+    return h * sum;
+}
+
+double simpson_integral(double a, double b, int n) // 辛普森法求定积分
+{
+    double h = (b - a) / n;
+    double sum = f(a) + f(b);
+    for (int i = 1; i < n; i++)
+    {
+        double x = a + i * h;
+        sum += (i % 2 == 0) ? 2 * f(x) : 4 * f(x);
+    }
+    return h * sum / 3;
+}
+
+int main()
+{
+    double a = 0.0; // 积分下限
+    double b = 1.0; // 积分上限
+    int n = 10000; // 分割数
+    double T = trapezoid_integral(a, b, n); // 使用梯形法求解定积分
+    double S = simpson_integral(a, b, n); // 使用辛普森法求解定积分
+    cout << "使用梯形法，分割数为" << n << "时，定积分的近似值为：" << T << endl;
+    cout << "使用辛普森法，分割数为" << n << "时，定积分的近似值为：" << S << endl;
+    return 0;
+}
