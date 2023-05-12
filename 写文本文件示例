@@ -1,0 +1,14 @@
+#include <iostream>
+#include <fstream>
+
+int main() {
+    std::ofstream file("example.txt"); // 创建文件
+    if (file.is_open()) { // 检查文件是否打开成功
+        file << "这是一个文本文件示例" << std::endl; // 写入文件内容
+        file.close(); // 关闭文件
+        std::cout << "文件写入成功！" << std::endl;
+    } else {
+        std::cout << "无法创建/打开文件" << std::endl;
+    }
+    return 0;
+}
