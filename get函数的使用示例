@@ -1,0 +1,13 @@
+#include <iostream>
+
+int main() {
+    char ch;
+
+    std::cout << "Enter a character: ";
+    ch = std::cin.get();    // 从标准输入流中读取一个字符并赋值给变量 ch
+
+    std::cout << "You entered: " << ch << std::endl;
+
+    return 0;
+}
+//gpt助写
