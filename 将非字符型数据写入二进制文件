@@ -1,0 +1,19 @@
+#include <iostream>
+#include <fstream>
+
+int main() {
+    float data[] = {1.23f, 4.56f, 7.89f};
+    std::ofstream outfile("data.bin", std::ios::out | std::ios::binary);
+
+    if (!outfile) {
+        std::cerr << "Failed to open the file." << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    outfile.write(reinterpret_cast<const char*>(&data), sizeof(data));
+
+    outfile.close();
+
+    return 0;
+}
+//gpt助写
