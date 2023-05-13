@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int count = 0; // 用于统计字符个数
+    int max_len = 0; // 用于存储最长字符串长度
+    string max_str; // 用于存储最长字符串
+    for (int i = 0; i < 5; i++) {
+        string str; // 用于存储每行输入的字符串
+        getline(cin, str); // 从键盘上获取输入
+        int len = str.length(); // 获取当前字符串长度
+        count += len; // 更新总字符数
+        if (len > max_len) { // 如果当前字符串比历史最大值更长
+            max_len = len; // 更新最大长度
+            max_str = str; // 更新最长字符串
+        }
+    }
+    cout << "输入的5行字符串中共有" << count << "个字符。" << endl;
+    cout << "其中最长的字符串是：" << max_str << endl;
+    return 0;
+}
+//gpt
