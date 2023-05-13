@@ -1,0 +1,77 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int x = 12345;
+
+    cout << setw(10) << setfill('*') << x << endl; // 用 * 填充不足的位数
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int x = 12345;
+
+    cout << setw(10) << x << endl; // 设置宽度为10
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double x = 3.1415926535;
+
+    cout << setprecision(4) << x << endl; // 输出4位小数
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double x = 123.456789;
+
+    cout << scientific << x << endl; // 输出科学计数法
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double x = 123.456789;
+
+    cout << fixed << setprecision(4) << x << endl; // 输出定点表示法
+
+    return 0;
+}
+
+//gpt
