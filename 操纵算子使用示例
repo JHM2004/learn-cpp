@@ -1,0 +1,104 @@
+C++中的操纵算子（manipulator）是一类可以用来操作输出流对象的特殊函数，它们通常用于进行格式化输出。以下是一些常用的操纵算子使用示例：
+
+1. endl
+endl操纵算子可以用来换行并刷新缓冲区。
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout << "Hello" << endl;
+    cout << "World" << endl;
+
+    return 0;
+}
+输出为：
+
+Hello
+World
+2. setw
+setw操纵算子可以用来设置输出域的宽度。
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int x = 12345;
+
+    cout << setw(10) << x << endl; // 设置宽度为10
+
+    return 0;
+}
+输出为：
+
+     12345
+3. setfill
+setfill操纵算子可以用来设置填充字符，类似于设置域的填充字符。
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int x = 12345;
+
+    cout << setw(10) << setfill('*') << x << endl; // 用 * 填充不足的位数
+
+    return 0;
+}
+输出为：
+
+*****12345
+4. setprecision
+setprecision操纵算子可以用来指定输出的小数精度。
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double x = 3.1415926535;
+
+    cout << setprecision(4) << x << endl; // 输出4位小数
+
+    return 0;
+}
+输出为：
+
+3.142
+5. fixed
+fixed操纵算子可以用来指定输出方式为小数点表示法。
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double x = 123.456789;
+
+    cout << fixed << setprecision(4) << x << endl; // 输出定点表示法
+
+    return 0;
+}
+输出为：
+
+123.4568
+通过组合使用上述操纵算子，我们可以灵活地实现不同的格式化输出需求。需要注意的是，操纵算子是可以串联使用的，例如：
+
+cout << setprecision(3) << fixed << setw(10) << setfill('*') << 123.456 << endl;
+输出为：
+
+***123.456
+希望这个例子能够帮助到你！
+//gpt
