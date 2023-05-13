@@ -1,0 +1,33 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cstring>
+using namespace std;
+
+int main ()
+{
+  // 打开文件
+  fstream file ("example.bin", ios::in|ios::out|ios::binary);
+  if (!file.is_open) {
+     cout << "无法打开文件" << endl;
+     return 0;
+  }
+  // 写入文件
+  file.write ((char*)&i, sizeof(int));
+  file.write ((char*)&f, sizeof(float));
+  file.write ((char*)&s, strlen(s) + 1);
+  // 读取文件
+  int i;
+  float f;
+  string s;
+  file.read ((char*)&i, sizeof(int));
+  file.read ((char*)&f, sizeof(float));
+  char buffer[256];
+  file.read (buffer, 256);
+  s = string(buffer);
+  
+  // 关闭文件
+  file.close();
+  
+  return 0;
+}
