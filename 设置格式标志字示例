@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int x = 12345;
+    double y = 3.1415926535;
+
+    cout << left << x << endl; // 左对齐输出整数
+    cout << right << y << endl; // 右对齐输出浮点数
+    cout << internal << x << endl; // 内部对齐输出整数
+    cout << showpos << x << endl; // 在正数前面显示加号
+    cout << uppercase << y << endl; // 大写输出浮点数（如果适用）
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    double x = 123.456789;
+
+    cout << fixed << x << endl; // 使用定点表示法
+    cout << scientific << x << endl; // 使用科学计数法
+    cout << setprecision(4) << x << endl; // 指定输出的精度为4位小数
+
+    return 0;
+}
+
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int x = 12345;
+    double y = 3.1415926535;
+
+    cout << setw(10) << x << endl; // 设置域宽为10个字符
+    cout << setw(10) << y << endl; // 设置域宽为10个字符
+
+    return 0;
+}
+
+
+
+cout << left << setw(20) << setfill('-') << "hello" << endl;
+
+
+
+//gpt
