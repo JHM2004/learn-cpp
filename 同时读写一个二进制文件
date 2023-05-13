@@ -3,6 +3,19 @@
 #include <string>
 #include <cstring>
 using namespace std;
+#include <fstream>
+using namespace std;
+
+/*int main() {
+   fstream file("example.bin", ios::in|ios::out|ios::binary);
+   if (!file.is_open) {
+      cout << "无法打开文件" << endl;
+      return 0;
+   }
+   // 读写文件操作
+   file.close();
+   return 0;
+}*/
 
 int main ()
 {
@@ -31,3 +44,4 @@ int main ()
   
   return 0;
 }
+//gpt助写
