@@ -1,0 +1,47 @@
+#include <fstream>
+using namespace std;
+
+int main() {
+   fstream file("example.bin", ios::in|ios::out|ios::binary);
+   if (!file.is_open) {
+      cout << "无法打开文件" << endl;
+      return 0;
+   }
+   
+   // 随机访问文件操作
+   file.close();
+   return 0;
+}
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+   fstream file("example.bin", ios::in|ios::out|ios::binary);
+   if (!file.is_open) {
+      cout << "无法打开文件" << endl;
+      return 0;
+   }
+   
+   int i = 42;
+   
+   // 随机访问文件操作
+   file.seekg(sizeof(int), ios::beg);
+   int j;
+   file.read((char *)&j, sizeof(int));
+   
+   cout << "j的值为：" << j << endl;
+   
+   file.seekp(0, ios::end);
+   file.write((char*)&i, sizeof(int));
+   
+   file.seekg(0, ios::beg);
+   int k;
+   file.read((char *)&k, sizeof(int));
+   
+   cout << "k的值为：" << k << endl;
+   
+   file.close();
+   return 0;
+}
+//gpt助写
