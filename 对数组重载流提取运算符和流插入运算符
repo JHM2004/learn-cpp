@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+
+class IntArray {
+public:
+    int* data;
+    int size;
+    IntArray(int size) {
+        this->size = size;
+        data = new int[size];
+    }
+    ~IntArray() {
+        delete[] data;
+    }
+
+    // 重载插入运算符
+    friend ostream& operator<<(ostream& out, const IntArray& a) {
+        for (int i = 0; i < a.size; i++) {
+            out << a.data[i] << " ";
+        }
+        return out;
+    }
+
+    // 重载提取运算符
+    friend istream& operator>>(istream& in, IntArray& a) {
+        for (int i = 0; i < a.size; i++) {
+            in >> a.data[i];
+        }
+        return in;
+    }
+};
+
+int main() {
+    IntArray a(3);
+
+    // 测试插入运算符
+    for (int i = 0; i < a.size; i++) {
+        a.data[i] = i + 1;
+    }
+    cout << "a: " << a << endl; // 输出 a: 1 2 3
+
+    // 测试提取运算符
+    IntArray b(3);
+    cout << "请输入三个整数: ";
+    cin >> b;
+    cout << "b: " << b << endl; // 输出 b 的值
+
+    return 0;
+}
+//gpt
