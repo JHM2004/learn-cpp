@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+
+class Complex {
+public:
+    double r;
+    double i;
+    Complex(double r = 0, double i = 0) :r(r), i(i) {};
+    friend Complex operator+(const Complex& a, const Complex& b);
+    friend Complex operator-(const Complex& a, const Complex& b);
+};
+
+Complex operator+(const Complex& a, const Complex& b) {
+    return Complex(a.r + b.r, a.i + b.i);
+}
+
+Complex operator-(const Complex& a, const Complex& b) {
+    return Complex(a.r - b.r, a.i - b.i);
+}
+
+int main() {
+    Complex a(1, 2);
+    Complex b(2, 3);
+    Complex c=a+b;
+    Complex d=a-b;
+
+    cout << c.r << "," << c.i << endl;//输出3,5
+    cout << d.r << "," << d.i << endl;//输出-1,-1
+
+    return 0;
+}
+//gpt
