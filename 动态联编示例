@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual double area() const = 0;
+};
+
+class Rectangle : public Shape {
+private:
+    double width;
+    double height;
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+    virtual double area() const {
+        return width * height;
+    }
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    virtual double area() const {
+        return radius * radius * 3.14159;
+    }
+};
+
+int main() {
+    Shape* shape;
+    Rectangle rec(3, 4);
+    Circle cir(2.5);
+
+    shape = &rec;
+    cout << "Rectangle 测试: area = " << shape->area() << endl;
+
+    shape = &cir;
+    cout << "Circle 测试: area = " << shape->area() << endl;
+
+    return 0;
+}
+//gpt
