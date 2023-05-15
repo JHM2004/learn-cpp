@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class MyString {
+private:
+    char* str;
+    int len;
+public:
+    MyString(const char* s) {
+        len = strlen(s);
+        str = new char[len + 1];
+        strcpy(str, s);
+    }
+    ~MyString() { delete[] str; }
+
+    // 重载字符数组下标运算符
+    char& operator[](const int index) {
+        return str[index];
+    }
+
+    void show() {
+        cout << str << endl;
+    }
+};
+
+int main() {
+    MyString str("Hello, World!");
+    cout << "Before change: ";
+    str.show();
+    str[7] = '-';
+    cout << "After change: ";
+    str.show();
+    return 0;
+}
+//gpt
