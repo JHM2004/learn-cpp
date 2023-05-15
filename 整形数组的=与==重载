@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+
+class IntArray {
+public:
+    int* data;
+    int size;
+    IntArray(int size) {
+        this->size = size;
+        data = new int[size];
+    }
+    ~IntArray() {
+        delete[] data;
+    }
+
+    // 重载赋值运算符
+    IntArray& operator=(const IntArray& a) {
+        if (this != &a) { // 避免自我赋值
+            delete[] data;
+            size = a.size;
+            data = new int[size];
+            for (int i = 0; i < size; i++) {
+                data[i] = a.data[i];
+            }
+        }
+        return *this;
+    }
+
+    // 重载相等运算符
+    bool operator==(const IntArray& a) const {
+        if (size != a.size) {
+            return false;
+        }
+        for (int i = 0; i < size; i++) {
+            if (data[i] != a.data[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+int main() {
+    IntArray a(3);
+    a.data[0] = 1;
+    a.data[1] = 2;
+    a.data[2] = 3;
+
+    IntArray b(3);
+    b.data[0] = 1;
+    b.data[1] = 2;
+    b.data[2] = 3;
+
+    IntArray c(3);
+    c.data[0] = 4;
+    c.data[1] = 5;
+    c.data[2] = 6;
+
+    // 测试赋值运算符
+    b = a;
+    cout << "a == b: " << (a == b) << endl; // 输出 1
+
+    // 测试相等运算符
+    cout << "a == c: " << (a == c) << endl; // 输出 0
+
+    return 0;
+}
+//gpt
