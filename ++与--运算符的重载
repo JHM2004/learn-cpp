@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+class Counter {
+private:
+    int count;
+public:
+    Counter(int c = 0) :count(c) {};
+
+    //前置++运算符重载函数
+    Counter& operator++() {
+        ++count;
+        return *this;
+    }
+
+    //后置++运算符重载函数
+    Counter operator++(int) {
+        Counter temp(*this);
+        ++count;
+        return temp;
+    }
+
+    //前置--运算符重载函数
+    Counter& operator--() {
+        --count;
+        return *this;
+    }
+
+    //后置--运算符重载函数
+    Counter operator--(int) {
+        Counter temp(*this);
+        --count;
+        return temp;
+    }
+
+    void display() {
+        cout << "count:" << count << endl;
+    }
+};
+
+int main() {
+    Counter c(10);
+    ++c;
+    c.display();//输出count:11
+    c++;
+    c.display();//输出count:12
+    --c;
+    c.display();//输出count:11
+    c--;
+    c.display();//输出count:10
+
+    return 0;
+}
+gpt
