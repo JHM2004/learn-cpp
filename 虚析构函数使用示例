@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual ~Shape() {
+        cout << "Shape 被删除" << endl;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    virtual ~Rectangle() {
+        cout << "Rectangle 被删除" << endl;
+    }
+};
+
+int main() {
+    Shape* pShape = new Rectangle();
+    delete pShape;
+    return 0;
+}
+//gpt
