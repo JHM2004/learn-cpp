@@ -1,0 +1,31 @@
+template <typename T>
+class Array {
+private:
+    T* m_data;
+    int m_size;
+
+public:
+    Array(int size) {
+        m_size = size;
+        m_data = new T[size];
+    }
+
+    ~Array() {
+        delete[] m_data;
+    }
+
+    void fill(const T& value) {
+        for (int i = 0; i < m_size; i++) {
+            m_data[i] = value;
+        }
+    }
+
+    T& operator[](int index) {
+        return m_data[index];
+    }
+
+    const T& operator[](int index) const {
+        return m_data[index];
+    }
+};
+//gpt
