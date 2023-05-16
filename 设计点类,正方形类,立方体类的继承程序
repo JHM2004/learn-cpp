@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// 点类
+class Point {
+protected:
+    int x, y;
+public:
+    Point(int a = 0, int b = 0) : x(a), y(b) { }
+    void display() {
+        cout << "(" << x << ", " << y << ")" << endl;
+    }
+};
+
+// 正方形类
+class Square : public Point {
+protected:
+    int side;
+public:
+    Square(int a = 0, int b = 0, int s = 0) : Point(a, b), side(s) { }
+    int area() {
+        return side * side;
+    }
+    void display() {
+        cout << "Square ";
+        Point::display();
+        cout << "Side: " << side << endl;
+    }
+};
+
+// 立方体类
+class Cube : public Square {
+protected:
+    int height;
+public:
+    Cube(int a = 0, int b = 0, int s = 0, int h = 0) : Square(a, b, s), height(h) { }
+    int volume() {
+        return area() * height;
+    }
+    void display() {
+        cout << "Cube ";
+        Point::display();
+        cout << "Side: " << side << " Height: " << height << endl;
+    }
+};
+
+int main() {
+    Point p(1, 2);
+    p.display();
+
+    Square s(1, 2, 3);
+    s.display();
+    cout << "Area: " << s.area() << endl;
+
+    Cube c(1, 2, 3, 4);
+    c.display();
+    cout << "Area: " << c.area() << endl;
+    cout << "Volume: " << c.volume() << endl;
+
+    return 0;
+}
+//gpt
