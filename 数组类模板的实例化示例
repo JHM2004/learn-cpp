@@ -1,0 +1,17 @@
+#include <iostream>
+#include "Array.h"
+
+int main() {
+    Array<int> intArray(5);    // 创建一个int类型的数组，大小为5
+    intArray.fill(0);          // 填充所有元素为0
+    intArray[0] = 1;           // 修改第一个元素的值
+    intArray[1] = 2;           // 修改第二个元素的值
+    std::cout << intArray[0] << ", " << intArray[1] << std::endl;    // 输出修改后的前2个元素的值
+
+    Array<double> doubleArray(3);   // 创建一个double类型的数组，大小为3
+    doubleArray.fill(1.23);         // 填充所有元素为1.23
+    std::cout << doubleArray[1] << std::endl;   // 输出第2个元素的值
+
+    return 0;
+}
+//gpt
