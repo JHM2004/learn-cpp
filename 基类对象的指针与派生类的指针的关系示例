@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    virtual void display() {
+        cout << "This is a Base object." << endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void display() {
+        cout << "This is a Derived object." << endl;
+    }
+};
+
+int main() {
+    Derived d;
+    Base* pb = &d;
+    pb->display();    // 调用 Derived 类的 display 函数
+
+    return 0;
+}
+//gpt
