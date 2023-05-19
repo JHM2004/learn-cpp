@@ -1,0 +1,29 @@
+#include <iostream>
+#include <regex>
+
+int main()
+{
+    std::string str = "The quick brown fox jumps over the lazy dog";
+    std::regex reg("[aeiou]");
+
+    // 搜索字符串中第一个匹配项
+    std::smatch match;
+    if (std::regex_search(str, match, reg))
+    {
+        std::cout << "First match found at position " << match.position() << std::endl;
+        std::cout << "Matched string: " << match.str() << std::endl;
+    }
+
+    // 迭代器遍历所有匹配项
+    std::sregex_iterator it(str.begin(), str.end(), reg);
+    std::sregex_iterator end;
+
+    for (; it != end; ++it)
+    {
+        std::cout << "Match found at position " << it->position() << std::endl;
+        std::cout << "Matched string: " << it->str() << std::endl;
+    }
+
+    return 0;
+}
+//gpt
