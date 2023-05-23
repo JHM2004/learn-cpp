@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// 定义抽象类 Shape
+class Shape {
+public:
+    virtual float getVolume() = 0;
+};
+
+// 正方体类
+class Cube : public Shape {
+public:
+    Cube(float length) : m_length(length) {}
+    virtual float getVolume() {
+        return pow(m_length, 3);
+    }
+private:
+    float m_length;
+};
+
+// 圆柱体类
+class Cylinder : public Shape {
+public:
+    Cylinder(float radius, float height) : m_radius(radius), m_height(height) {}
+    virtual float getVolume() {
+        return M_PI * pow(m_radius, 2) * m_height;
+    }
+private:
+    float m_radius;
+    float m_height;
+};
+
+// 球体类
+class Sphere : public Shape {
+public:
+    Sphere(float radius) : m_radius(radius) {}
+    virtual float getVolume() {
+        return 4 / 3.0 * M_PI * pow(m_radius, 3);
+    }
+private:
+    float m_radius;
+};
+
+int main()
+{
+    // 创建正方体、圆柱体、球体对象并调用虚函数获取体积
+    Shape* cube = new Cube(3.0);
+    Shape* cylinder = new Cylinder(2.0, 5.0);
+    Shape* sphere = new Sphere(4.0);
+
+    cout << "The volume of cube is: " << cube->getVolume() << endl;
+    cout << "The volume of cylinder is: " << cylinder->getVolume() << endl;
+    cout << "The volume of sphere is: " << sphere->getVolume() << endl;
+
+    delete cube;
+    delete cylinder;
+    delete sphere;
+    
+    return 0;
+}
+//gpt
