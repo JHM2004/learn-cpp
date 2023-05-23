@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class MyString {
+public:
+    MyString() : data(nullptr), len(0) {}
+    MyString(char* d, int l) : len(l) {
+        data = new char[len+1];
+        memcpy(data, d, len+1);
+    }
+    ~MyString() {
+        if(data) {
+            delete[] data;
+        }
+    }
+    MyString& operator+=(const MyString& other) {
+        char* temp = new char[len+other.len +1];
+        memcpy(temp, data, len+1);
+        memcpy(temp+len, other.data, other.len+1);
+        len += other.len;
+        if(data) {
+            delete[] data;
+        }
+        data = temp;
+        return *this;
+    }
+    friend MyString& operator+=(MyString& left, const MyString& right) {
+        char* temp = new char[left.len+right.len+1];
+        memcpy(temp, left.data, left.len+1);
+        memcpy(temp+left.len, right.data, right.len+1);
+        left.len += right.len;
+        if(left.data) {
+            delete[] left.data;
+        }
+        left.data = temp;
+        return left;
+    }
+    
+    friend ostream& operator<<(ostream& os, const MyString& obj) {
+        os << obj.data;
+        return os;
+    }
+    
+private:
+    char* data;
+    int len;
+};
+
+int main() {
+    MyString a("hello,", 6);
+    MyString b("world!", 6);
+    cout << "a = " << a << endl;
+    cout << "b = " << b << endl;
+    a += b;
+    cout << "a += b = " << a << endl;
+    MyString c("你好", 6);
+    MyString d("世界", 6);
+    cout << "c = " << c << endl;
+    cout << "d = " << d << endl;
+    c.operator+=(d);
+    cout << "c.operator+=(d) = " << c << endl;
+    return 0;
+}
+//gpt
